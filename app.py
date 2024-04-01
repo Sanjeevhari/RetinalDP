@@ -17,3 +17,9 @@ with st.sidebar:
         st.image('bg1.jpg')
         st.title("Retinal Detection")
         st.subheader("Detection of diseases present in the Retinal. This helps an user to easily detect the disease and identify it's cause.")
+
+st.write("""
+         # Retinal Disease Detection
+         """
+         )
+file = st.file_uploader("", type=["jpg", "png"])
