@@ -14,6 +14,6 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 with st.sidebar:
-        st.image('bg1.png')
+        st.image('bg1.jpg')
         st.title("Mangifera Healthika")
         st.subheader("Detection of diseases present in the Retinal. This helps an user to easily detect the disease and identify it's cause.")
