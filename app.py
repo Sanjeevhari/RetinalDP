@@ -46,7 +46,7 @@ if file is None:
 else:
     image_data = file.read()
     st.image(image_data, width=250)
-    prediction = predict(file)
+    prediction = predict(image_data)
     st.write(f"Predicted Disease: {prediction}")
 
     string = "Detected Disease : " + prediction
