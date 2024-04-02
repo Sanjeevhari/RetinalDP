@@ -44,7 +44,7 @@ file = st.file_uploader("", type=["jpg", "png"])
 if file is None:
     st.text("Please upload an image file")
 else:
-    image_data = uploaded_file.read()
+    image_data = file.read()
     st.image(image_data, width=250)
     prediction = predict(uploaded_file)
     st.write(f"Predicted Disease: {prediction}")
