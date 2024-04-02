@@ -25,4 +25,49 @@ st.write("""
          # Retinal Disease Detection
          """
          )
+
+model = load_model('Modeleye.h5')
+
+labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
+
+def predict(image_file):
+  img = image.load_img(image_file, target_size=(224, 224))
+  img_array = image.img_to_array(img)
+  img_array = img_array / 255.0
+  img_batch = np.expand_dims(img_array, axis=0)
+  predictions = model.predict(img_batch)
+  predicted_class = argmax(predictions[0])
+  return labels[predicted_class]
+
 file = st.file_uploader("", type=["jpg", "png"])
+
+if file is None:
+    st.text("Please upload an image file")
+else:
+    image_data = uploaded_file.read()
+    st.image(image_data, width=250)
+    prediction = predict(uploaded_file)
+    st.write(f"Predicted Disease: {prediction}")
+
+    string = "Detected Disease : " + prediction
+    if class_names[np.argmax(predictions)] == 'normal':
+        st.balloons()
+        st.sidebar.success(string)
+
+    elif class_names[np.argmax(predictions)] == 'Anthracnose':
+        st.sidebar.warning(string)
+        #st.markdown("## Remedy")
+        #st.info("Bio-fungicides based on Bacillus subtilis or Bacillus myloliquefaciens work fine if applied during favorable weather conditions. Hot water treatment of seeds or fruits (48°C for 20 minutes) can kill any fungal residue and prevent further spreading of the disease in the field or during transport.")
+
+    elif class_names[np.argmax(predictions)] == 'Bacterial Canker':
+        st.sidebar.warning(string)
+        #st.markdown("## Remedy")
+        #st.info("Prune flowering trees during blooming when wounds heal fastest. Remove wilted or dead limbs well below infected areas. Avoid pruning in early spring and fall when bacteria are most active.If using string trimmers around the base of trees avoid damaging bark with breathable Tree Wrap to prevent infection.")
+
+    elif class_names[np.argmax(predictions)] == 'Cutting Weevil':
+        st.sidebar.warning(string)
+        #st.markdown("## Remedy")
+        #st.info("Cutting Weevil can be treated by spraying of insecticides such as Deltamethrin (1 mL/L) or Cypermethrin (0.5 mL/L) or Carbaryl (4 g/L) during new leaf emergence can effectively prevent the weevil damage.")
+
+
+
