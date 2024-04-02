@@ -26,7 +26,7 @@ st.write("""
          """
          )
 
-model = load_model('Modeleye.h5')
+#model = load_model('Modeleye.h5')
 
 labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
