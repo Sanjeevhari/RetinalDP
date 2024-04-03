@@ -1,7 +1,7 @@
 import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow import argmax
-from keras.preprocessing import image
+import keras.utils as image
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
