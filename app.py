@@ -52,21 +52,21 @@ else:
     st.write(f"Predicted Disease: {prediction}")
 
     string = "Detected Disease : " + prediction
-    if class_names[np.argmax(predictions)] == 'normal':
+    if prediction == 'normal':
         st.balloons()
         st.sidebar.success(string)
 
-    elif class_names[np.argmax(predictions)] == 'cataract':
+    elif prediction == 'cataract':
         st.sidebar.warning(string)
         #st.markdown("## Remedy")
         #st.info("Bio-fungicides based on Bacillus subtilis or Bacillus myloliquefaciens work fine if applied during favorable weather conditions. Hot water treatment of seeds or fruits (48°C for 20 minutes) can kill any fungal residue and prevent further spreading of the disease in the field or during transport.")
 
-    elif class_names[np.argmax(predictions)] == 'diabetic_retinopathy':
+    elif prediction == 'diabetic_retinopathy':
         st.sidebar.warning(string)
         #st.markdown("## Remedy")
         #st.info("Prune flowering trees during blooming when wounds heal fastest. Remove wilted or dead limbs well below infected areas. Avoid pruning in early spring and fall when bacteria are most active.If using string trimmers around the base of trees avoid damaging bark with breathable Tree Wrap to prevent infection.")
 
-    elif class_names[np.argmax(predictions)] == 'glaucoma':
+    elif prediction == 'glaucoma':
         st.sidebar.warning(string)
         #st.markdown("## Remedy")
         #st.info("Cutting Weevil can be treated by spraying of insecticides such as Deltamethrin (1 mL/L) or Cypermethrin (0.5 mL/L) or Carbaryl (4 g/L) during new leaf emergence can effectively prevent the weevil damage.")
