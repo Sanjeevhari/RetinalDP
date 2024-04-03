@@ -3,6 +3,7 @@ from tensorflow.keras.models import load_model
 from tensorflow import argmax
 from keras.preprocessing import image
 import tensorflow as tf
+import numpy as np
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
