@@ -35,7 +35,7 @@ labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 def predict(image_file):
   img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
   img_array = tf.keras.preprocessing.image.img_to_array(img)
-  img_array = img_array / 255.0
+  #img_array = img_array / 255.0
   img_batch = np.expand_dims(img_array, axis=0)
   predictions = model.predict(img_batch)
   predicted_class = argmax(predictions[0])
