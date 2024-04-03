@@ -2,6 +2,7 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow import argmax
 from keras.preprocessing import image
+import tensorflow as tf
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
@@ -31,7 +32,7 @@ model = load_model('Modeleye.h5')
 labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
 def predict(image_file):
-  img = image.load_img(image_file, target_size=(224, 224))
+  img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
   img_array = image.img_to_array(img)
   img_array = img_array / 255.0
   img_batch = np.expand_dims(img_array, axis=0)
