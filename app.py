@@ -79,7 +79,7 @@ else:
     image_data = file.read()
     col1.image(image_data)
     prediction = predict(file)
-    grad_cam(file)
+    grad_cam(image_data)
     st.write(f"Predicted Disease: {prediction}")
 
     string = "Detected Disease : " + prediction
