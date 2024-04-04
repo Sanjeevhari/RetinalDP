@@ -1,9 +1,11 @@
 import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow import argmax
-from keras.preprocessing import image
 import tensorflow as tf
 import numpy as np
+from tensorflow.keras import backend as K
+import matplotlib.pyplot as plt
+import cv2
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
@@ -42,12 +44,12 @@ def predict(image_file):
   return labels[predicted_class]
 
 file = st.file_uploader("", type=["jpg", "png"])
-
+col1, col2 = st.columns(2)
 if file is None:
     st.text("Please upload an image file")
 else:
     image_data = file.read()
-    st.image(image_data, width=250)
+    col1.image(image_data)
     prediction = predict(file)
     st.write(f"Predicted Disease: {prediction}")
 
