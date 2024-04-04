@@ -34,6 +34,34 @@ model = load_model('Modeleye.h5')
 
 labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
+def grad_cam(fname, model):
+    DIM = 224
+    img = tf.keras.preprocessing.image.load_img(fname, target_size=(DIM, DIM))
+    x = tf.keras.preprocessing.image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+
+    with tf.GradientTape() as tape:
+        last_conv_layer = model.get_layer('conv5_block16_concat')
+        iterate = tf.keras.models.Model([model.input], [model.output, last_conv_layer.output])
+        model_out, last_conv_layer = iterate(x)
+        class_out = model_out[:, np.argmax(model_out[0])]
+        grads = tape.gradient(class_out, last_conv_layer)
+        pooled_grads = K.mean(grads, axis=(0, 1, 2))
+
+    heatmap = tf.reduce_mean(tf.multiply(pooled_grads, last_conv_layer), axis=-1)
+    heatmap = np.maximum(heatmap, 0)
+    heatmap /= np.max(heatmap)
+    heatmap = heatmap.reshape((7, 7))
+
+    img = cv2.imread(fname)
+
+    INTENSITY = 0.5
+    heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
+    heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
+    img1 = heatmap * INTENSITY + img
+
+    col2.image(cv2.resize(img1, (300, 300)))
+
 def predict(image_file):
   img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
   img_array = tf.keras.preprocessing.image.img_to_array(img)
