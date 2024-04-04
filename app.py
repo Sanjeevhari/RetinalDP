@@ -5,7 +5,6 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras import backend as K
 import matplotlib.pyplot as plt
-import cv2
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
