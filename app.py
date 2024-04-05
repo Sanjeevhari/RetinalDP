@@ -35,6 +35,7 @@ model = load_model('Modeleye.h5')
 labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
 def grad_cam(fname):
+    img = cv2.imread(fname)
     DIM = 224
     img = tf.keras.preprocessing.image.load_img(fname, target_size=(DIM, DIM))
     x = tf.keras.preprocessing.image.img_to_array(img)
