@@ -35,7 +35,6 @@ model = load_model('Modeleye.h5')
 labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
 
 def grad_cam(fname):
-    img = cv2.imread(fname)
     DIM = 224
     img = tf.keras.preprocessing.image.load_img(fname, target_size=(DIM, DIM))
     x = tf.keras.preprocessing.image.img_to_array(img)
@@ -80,7 +79,7 @@ else:
     image_data = file.read()
     col1.image(image_data)
     prediction = predict(file)
-    grad_cam(image_data)
+    grad_cam(file)
     st.write(f"Predicted Disease: {prediction}")
 
     string = "Detected Disease : " + prediction
