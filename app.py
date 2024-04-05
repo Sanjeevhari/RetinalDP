@@ -54,7 +54,9 @@ def grad_cam(fname):
     heatmap = heatmap.reshape((7, 7))
 
     #img = cv2.imread(fname)
-    img = cv2.imdecode(np.fromstring(fname.read(), np.uint8), 1)
+    #img = cv2.imdecode(np.fromstring(fname.read(), np.uint8), 1)
+    file_bytes = np.asarray(bytearray(fname.read()), dtype=np.uint8)
+    img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
 
     INTENSITY = 0.5
     heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
