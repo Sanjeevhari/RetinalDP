@@ -80,10 +80,10 @@ if file is None:
 else:
     #file_bytes = np.asarray(bytearray(file.read()), dtype=np.uint8)
     #img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-    image_data = file.read()
-    col1.image(image_data)
-    prediction = predict(file)
-    #grad_cam(file)
+    #image_data = file.read()
+    #col1.image(image_data)
+    #prediction = predict(file)
+    grad_cam(file)
     st.write(f"Predicted Disease: {prediction}")
 
     string = "Detected Disease : " + prediction
