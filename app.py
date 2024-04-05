@@ -39,7 +39,6 @@ def grad_cam(fname):
     img = tf.keras.preprocessing.image.load_img(fname, target_size=(DIM, DIM))
     x = tf.keras.preprocessing.image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
-    st.write("hello")
     with tf.GradientTape() as tape:
         last_conv_layer = model.get_layer('conv5_block16_concat')
         iterate = tf.keras.models.Model([model.input], [model.output, last_conv_layer.output])
