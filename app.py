@@ -5,6 +5,7 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras import backend as K
 import matplotlib.pyplot as plt
+from matplotlib import cm
 import cv2
 
 st.set_page_config(
@@ -62,18 +63,21 @@ def grad_cam(fname):
     plt.axis('off')  # Turn off axis
     st.pyplot()
 
-    #img = cv2.imread(fname)
-    #img = cv2.imdecode(np.fromstring(fname.read(), np.uint8), 1)
-    #file_path = save_uploaded_file(fname)
-    #image = cv2.imread(file_path)
-    #img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     img = tf.keras.preprocessing.image.img_to_array(img)
-    #st.image(img)
 
-    INTENSITY = 0.5
-    heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
-    heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
-    img1 = heatmap * INTENSITY + img
+    heatmap = np.uint8(255 * heatmap_array)
+
+    jet = cm.get_cmap("jet")
+
+    jet_colors = jet(np.arange(256))[:, :3]
+    jet_heatmap = jet_colors[heatmap]
+
+    jet_heatmap = tf.keras.preprocessing.image.array_to_img(jet_heatmap)
+    jet_heatmap = jet_heatmap.resize((img.shape[1], img.shape[0]))
+    jet_heatmap = tf.keras.preprocessing.image.img_to_array(jet_heatmap)
+
+    superimposed_img = jet_heatmap * alpha + img
+    img1 = tf.keras.preprocessing.image.array_to_img(superimposed_img)
 
     #col2.image(img1)
     st.image(img1)
