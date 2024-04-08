@@ -63,10 +63,11 @@ def grad_cam(fname):
 
     #img = cv2.imread(fname)
     #img = cv2.imdecode(np.fromstring(fname.read(), np.uint8), 1)
-    file_path = save_uploaded_file(fname)
-    image = cv2.imread(file_path)
-    img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    st.image(img)
+    #file_path = save_uploaded_file(fname)
+    #image = cv2.imread(file_path)
+    #img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    img = tf.keras.preprocessing.image.img_to_array(img)
+    #st.image(img)
 
     INTENSITY = 0.5
     heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
