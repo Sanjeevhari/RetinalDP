@@ -78,10 +78,8 @@ col1, col2 = st.columns(2)
 if file is None:
     st.text("Please upload an image file")
 else:
-    file_path = save_uploaded_file(file)
-    img = cv2.imread(file_path)
-    #image_data = file.read()
-    col1.image(img)
+    image_data = file.read()
+    col1.image(image_data)
     #prediction = predict(file)
     #grad_cam(file)
     #st.write(f"Predicted Disease: {prediction}")
