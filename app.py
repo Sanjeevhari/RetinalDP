@@ -56,6 +56,9 @@ def grad_cam(fname):
     heatmap = np.maximum(heatmap, 0)
     heatmap /= np.max(heatmap)
     heatmap = heatmap.reshape((7, 7))
+    plt.matshow(heatmap)
+    plt.axis('off')  # Turn off axis
+    st.pyplot()
 
     #img = cv2.imread(fname)
     #img = cv2.imdecode(np.fromstring(fname.read(), np.uint8), 1)
