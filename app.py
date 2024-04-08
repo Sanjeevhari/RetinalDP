@@ -78,8 +78,7 @@ col1, col2 = st.columns(2)
 if file is None:
     st.text("Please upload an image file")
 else:
-    file_bytes = np.asarray(bytearray(file.read()), dtype=np.uint8)
-    img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+    img = cv2.imread(file)
     #image_data = file.read()
     col1.image(img)
     #prediction = predict(file)
