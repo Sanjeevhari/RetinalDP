@@ -59,8 +59,9 @@ def grad_cam(fname):
 
     #img = cv2.imread(fname)
     #img = cv2.imdecode(np.fromstring(fname.read(), np.uint8), 1)
-    file_bytes = np.asarray(bytearray(fname.read()), dtype=np.uint8)
-    img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+    file_path = save_uploaded_file(fname)
+    image = cv2.imread(file_path)
+    img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     INTENSITY = 0.5
     heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
@@ -84,12 +85,9 @@ if file is None:
     st.text("Please upload an image file")
 else:
     #image_data = file.read()
-    file_path = save_uploaded_file(file)
-    image = cv2.imread(file_path)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    col1.image(image)
+    #col1.image(image)
     #prediction = predict(file)
-    #grad_cam(file)
+    grad_cam(file)
     #st.write(f"Predicted Disease: {prediction}")
 
     string = "Detected Disease : " + prediction
