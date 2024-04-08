@@ -58,13 +58,12 @@ def grad_cam(fname):
     heatmap = np.maximum(heatmap, 0)
     heatmap /= np.max(heatmap)
     heatmap = heatmap.reshape((7, 7))
-    st.write(type(heatmap))
     plt.matshow(heatmap)
     plt.axis('off')  # Turn off axis
     st.pyplot()
 
     img = tf.keras.preprocessing.image.img_to_array(img)
-
+    alpha=0.4
     heatmap = np.uint8(255 * heatmap)
 
     jet = cm.get_cmap("jet")
