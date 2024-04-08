@@ -68,7 +68,7 @@ def grad_cam(fname):
     heatmap = cv2.applyColorMap(np.uint8(255*heatmap), cv2.COLORMAP_JET)
     img1 = heatmap * INTENSITY + img
 
-    col2.image(cv2.resize(img1, (300, 300)))
+    col2.image(img1)
 
 def predict(image_file):
   img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
