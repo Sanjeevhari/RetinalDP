@@ -63,7 +63,7 @@ def grad_cam(fname):
     st.pyplot()
 
     img = tf.keras.preprocessing.image.img_to_array(img)
-    alpha=0.7
+    alpha=0.9
     heatmap = np.uint8(255 * heatmap)
 
     jet = cm.get_cmap("jet")
