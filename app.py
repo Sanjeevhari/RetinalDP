@@ -75,7 +75,7 @@ def grad_cam(fname):
     img1 = heatmap * INTENSITY + img
 
     #col2.image(img1)
-    st.image(img1, clamp=True, channels='RGB')
+    st.image(img1)
 
 def predict(image_file):
   img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
