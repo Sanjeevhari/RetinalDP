@@ -62,6 +62,7 @@ def grad_cam(fname):
     file_path = save_uploaded_file(fname)
     image = cv2.imread(file_path)
     img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    st.image(img)
 
     INTENSITY = 0.5
     heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
