@@ -33,7 +33,7 @@ st.write("""
 
 model = load_model('Modeleye.h5')
 
-labels= ['cataract', 'diabetic_retinopathy', 'glaucoma', 'normal']
+labels= ['Cataract', 'Diabetic Retinopathy', 'Glaucoma', 'Normal']
 
 def save_uploaded_file(uploaded_file):
     with open("temp_image.jpg", "wb") as f:
@@ -58,9 +58,6 @@ def grad_cam(fname):
     heatmap = np.maximum(heatmap, 0)
     heatmap /= np.max(heatmap)
     heatmap = heatmap.reshape((7, 7))
-    plt.matshow(heatmap)
-    plt.axis('off')  # Turn off axis
-    st.pyplot()
 
     img = tf.keras.preprocessing.image.img_to_array(img)
     alpha=1.1
@@ -78,8 +75,8 @@ def grad_cam(fname):
     superimposed_img = jet_heatmap * alpha + img
     img1 = tf.keras.preprocessing.image.array_to_img(superimposed_img)
 
-    #col2.image(img1)
-    st.image(img1)
+    col2.image(img1)
+    #st.image(img1)
 
 def predict(image_file):
   img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
@@ -95,9 +92,9 @@ col1, col2 = st.columns(2)
 if file is None:
     st.text("Please upload an image file")
 else:
-    #image_data = file.read()
-    #col1.image(image)
-    #prediction = predict(file)
+    image_data = file.read()
+    col1.image(image)
+    prediction = predict(file)
     grad_cam(file)
     #st.write(f"Predicted Disease: {prediction}")
 
