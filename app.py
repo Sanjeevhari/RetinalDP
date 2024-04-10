@@ -93,7 +93,7 @@ if file is None:
     st.text("Please upload an image file")
 else:
     image_data = file.read()
-    col1.image(image)
+    col1.image(image_data)
     prediction = predict(file)
     grad_cam(file)
     #st.write(f"Predicted Disease: {prediction}")
