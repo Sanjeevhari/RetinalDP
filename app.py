@@ -43,7 +43,6 @@ def save_uploaded_file(uploaded_file):
 def grad_cam(fname):
     DIM = 224
     img = tf.keras.preprocessing.image.load_img(fname, target_size=(DIM, DIM))
-    st.image(img)
     x = tf.keras.preprocessing.image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     with tf.GradientTape() as tape:
