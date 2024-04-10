@@ -101,10 +101,10 @@ file = image_select(
 )
 
 col1, col2 = st.columns(2)
-if file is None and selected_img is None:
+if file is None and upload_img is None:
     st.text("Please upload or select an image file")
 else:
-    if file is not None:
+    if upload_img is not None:
         file = upload_img.read()
     col1.image(file)
     prediction = predict(file)
