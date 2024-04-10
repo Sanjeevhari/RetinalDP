@@ -101,11 +101,11 @@ b1.button("Reset", type="primary")
 class_btn = b7.button("Classify")
 
 if class_btn:
+    st.markdown("# Result")
     col1, col2 = st.columns(2)
     if file is None and upload_img is None:
         st.text("Please upload or select an image file")
     else:
-        st.markdown("# Result")
         if upload_img is not None:
             col1.image(upload_img.read(), caption='Original Image')
             file=upload_img
