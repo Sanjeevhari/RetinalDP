@@ -97,6 +97,7 @@ file = image_select(
     ],
 )
 b1, b2, b3, b4, b5, b6 = st.columns(6)
+b1.button("Reset", type="primary")
 class_btn = b6.button("Classify")
 col1, col2 = st.columns(2)
 
