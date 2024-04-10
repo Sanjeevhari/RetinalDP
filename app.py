@@ -88,9 +88,9 @@ def predict(image_file):
   predicted_class = argmax(predictions[0])
   return labels[predicted_class]
 
-file = st.file_uploader("", type=["jpg", "png"])
+upload_img = st.file_uploader("", type=["jpg", "png"])
 
-selected_img = image_select(
+file = image_select(
     label="Please upload or select an image file",
     images=[
         "Images/10015_left.jpg",
@@ -104,9 +104,8 @@ col1, col2 = st.columns(2)
 if file is None and selected_img is None:
     st.text("Please upload or select an image file")
 else:
-    if file is None:
-        file = selected_img
-    #image_data = file.read()
+    if file is not None:
+        file = upload_img.read()
     col1.image(file)
     prediction = predict(file)
     grad_cam(file)
