@@ -105,8 +105,10 @@ if file is None and upload_img is None:
     st.text("Please upload or select an image file")
 else:
     if upload_img is not None:
-        file = upload_img.read()
-    col1.image(file)
+        col1.image(upload_img.read())
+        file=upload_img
+    else:
+        col1.image(file)
     prediction = predict(file)
     grad_cam(file)
     #st.write(f"Predicted Disease: {prediction}")
