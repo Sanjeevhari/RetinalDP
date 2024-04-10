@@ -58,6 +58,7 @@ def grad_cam(fname):
     heatmap /= np.max(heatmap)
     heatmap = heatmap.reshape((7, 7))
 
+    img = tf.keras.preprocessing.image.load_img(fname)
     img = tf.keras.preprocessing.image.img_to_array(img)
     alpha=1.1
     heatmap = np.uint8(255 * heatmap)
@@ -74,7 +75,7 @@ def grad_cam(fname):
     superimposed_img = jet_heatmap * alpha + img
     img1 = tf.keras.preprocessing.image.array_to_img(superimposed_img)
 
-    col2.image(img1,use_column_width="always")
+    col2.image(img1)#,use_column_width="always")
     #st.image(img1)
 
 def predict(image_file):
