@@ -101,7 +101,7 @@ selected_img = image_select(
 )
 
 col1, col2 = st.columns(2)
-if file is None and img is None:
+if file is None and selected_img is None:
     st.text("Please upload or select an image file")
 else:
     if file is None:
