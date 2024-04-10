@@ -88,6 +88,17 @@ def predict(image_file):
   return labels[predicted_class]
 
 file = st.file_uploader("", type=["jpg", "png"])
+
+img = image_select(
+    label="in this image here ...",
+    images=[
+        "Images/10015_left.jpg",
+        "Images/1020_left.jpg",
+        "Images/1034_left.jpg",
+        "Images/112_right.jpg",
+    ],
+)
+
 col1, col2 = st.columns(2)
 if file is None:
     st.text("Please upload an image file")
