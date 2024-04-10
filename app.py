@@ -26,7 +26,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 button_html = """
     <style>
         .styled-button {
-            background-color: #008CBA;
+            background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
             border: none;
             color: white;
             padding: 15px 32px;
