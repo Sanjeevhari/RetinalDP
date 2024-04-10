@@ -106,8 +106,8 @@ if file is None and selected_img is None:
 else:
     if file is None:
         file = selected_img
-    image_data = file.read()
-    col1.image(image_data)
+    #image_data = file.read()
+    col1.image(file)
     prediction = predict(file)
     grad_cam(file)
     #st.write(f"Predicted Disease: {prediction}")
