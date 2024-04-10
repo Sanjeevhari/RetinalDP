@@ -99,12 +99,13 @@ file = image_select(
 b1, b2, b3, b4, b5, b6, b7= st.columns(7)
 b1.button("Reset", type="primary")
 class_btn = b7.button("Classify")
-col1, col2 = st.columns(2)
 
 if class_btn:
+    col1, col2 = st.columns(2)
     if file is None and upload_img is None:
         st.text("Please upload or select an image file")
     else:
+        st.markdown("# Result")
         if upload_img is not None:
             col1.image(upload_img.read(), caption='Original Image')
             file=upload_img
@@ -113,7 +114,6 @@ if class_btn:
         prediction = predict(file)
         grad_cam(file)
         
-        st.write("#Result")
         string = "Detected Disease : " + prediction
         if prediction == 'Normal':
             st.balloons()
