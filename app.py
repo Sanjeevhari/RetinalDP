@@ -95,39 +95,41 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-
+class_btn = st.button("Classify")
 col1, col2 = st.columns(2)
-if file is None and upload_img is None:
-    st.text("Please upload or select an image file")
-else:
-    if upload_img is not None:
-        col1.image(upload_img.read())
-        file=upload_img
+
+if class_btn:
+    if file is None and upload_img is None:
+        st.text("Please upload or select an image file")
     else:
-        col1.image(file)
-    prediction = predict(file)
-    grad_cam(file)
-    #st.write(f"Predicted Disease: {prediction}")
+        if upload_img is not None:
+            col1.image(upload_img.read())
+            file=upload_img
+        else:
+            col1.image(file)
+        prediction = predict(file)
+        grad_cam(file)
+        #st.write(f"Predicted Disease: {prediction}")
 
-    string = "Detected Disease : " + prediction
-    if prediction == 'Normal':
-        st.balloons()
-        st.sidebar.success(string)
+        string = "Detected Disease : " + prediction
+        if prediction == 'Normal':
+            st.balloons()
+            st.sidebar.success(string)
 
-    elif prediction == 'Cataract':
-        st.sidebar.warning(string)
-        #st.markdown("## Remedy")
-        #st.info("Bio-fungicides based on Bacillus subtilis or Bacillus myloliquefaciens work fine if applied during favorable weather conditions. Hot water treatment of seeds or fruits (48°C for 20 minutes) can kill any fungal residue and prevent further spreading of the disease in the field or during transport.")
+        elif prediction == 'Cataract':
+            st.sidebar.warning(string)
+            #st.markdown("## Remedy")
+            #st.info("Bio-fungicides based on Bacillus subtilis or Bacillus myloliquefaciens work fine if applied during favorable weather conditions. Hot water treatment of seeds or fruits (48°C for 20 minutes) can kill any fungal residue and prevent further spreading of the disease in the field or during transport.")
 
-    elif prediction == 'Diabetic Retinopathy':
-        st.sidebar.warning(string)
-        #st.markdown("## Remedy")
-        #st.info("Prune flowering trees during blooming when wounds heal fastest. Remove wilted or dead limbs well below infected areas. Avoid pruning in early spring and fall when bacteria are most active.If using string trimmers around the base of trees avoid damaging bark with breathable Tree Wrap to prevent infection.")
+        elif prediction == 'Diabetic Retinopathy':
+            st.sidebar.warning(string)
+            #st.markdown("## Remedy")
+            #st.info("Prune flowering trees during blooming when wounds heal fastest. Remove wilted or dead limbs well below infected areas. Avoid pruning in early spring and fall when bacteria are most active.If using string trimmers around the base of trees avoid damaging bark with breathable Tree Wrap to prevent infection.")
 
-    elif prediction == 'Glaucoma':
-        st.sidebar.warning(string)
-        #st.markdown("## Remedy")
-        #st.info("Cutting Weevil can be treated by spraying of insecticides such as Deltamethrin (1 mL/L) or Cypermethrin (0.5 mL/L) or Carbaryl (4 g/L) during new leaf emergence can effectively prevent the weevil damage.")
+        elif prediction == 'Glaucoma':
+            st.sidebar.warning(string)
+            #st.markdown("## Remedy")
+            #st.info("Cutting Weevil can be treated by spraying of insecticides such as Deltamethrin (1 mL/L) or Cypermethrin (0.5 mL/L) or Carbaryl (4 g/L) during new leaf emergence can effectively prevent the weevil damage.")
 
 
 
