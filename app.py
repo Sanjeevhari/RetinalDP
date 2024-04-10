@@ -72,7 +72,7 @@ def grad_cam(fname):
     superimposed_img = jet_heatmap * alpha + img
     img1 = tf.keras.preprocessing.image.array_to_img(superimposed_img)
 
-    col2.image(img1)#,use_column_width="always")
+    col2.image(img1, caption='Grad cam')#,use_column_width="always")
     #st.image(img1)
 
 
@@ -96,9 +96,9 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-b1, b2, b3, b4, b5, b6 = st.columns(6)
+b1, b2 = st.columns(2)
 b1.button("Reset", type="primary")
-class_btn = b6.button("Classify")
+class_btn = b2.button("Classify")
 col1, col2 = st.columns(2)
 
 if class_btn:
@@ -106,10 +106,10 @@ if class_btn:
         st.text("Please upload or select an image file")
     else:
         if upload_img is not None:
-            col1.image(upload_img.read())
+            col1.image(upload_img.read(), caption='Original Image')
             file=upload_img
         else:
-            col1.image(file)
+            col1.image(file, caption='Original Image')
         prediction = predict(file)
         grad_cam(file)
         #st.write(f"Predicted Disease: {prediction}")
@@ -121,17 +121,17 @@ if class_btn:
 
         elif prediction == 'Cataract':
             st.sidebar.warning(string)
-            #st.markdown("## Remedy")
+            st.markdown("## Cataract")
             st.info("Cataract is a clouding of the eye's lens, resulting in blurred vision. Grad-CAM highlights areas affected by cataracts, typically focusing on the lens region in retinal images.")
 
         elif prediction == 'Diabetic Retinopathy':
             st.sidebar.warning(string)
-            #st.markdown("## Remedy")
+            st.markdown("## Diabetic Retinopathy")
             st.info("Diabetic retinopathy is a complication of diabetes that damages the blood vessels in the retina, leading to vision impairment. Grad-CAM highlights areas with abnormal blood vessel growth or leakage in retinal images")
 
         elif prediction == 'Glaucoma':
             st.sidebar.warning(string)
-            #st.markdown("## Remedy")
+            st.markdown("## Glaucoma")
             st.info("Glaucoma is a group of eye disorders that damage the optic nerve, often due to increased pressure in the eye. Grad-CAM highlights the optic nerve region in retinal images, where damage may indicate the presence of glaucoma.")
 
 
