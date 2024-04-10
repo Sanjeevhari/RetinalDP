@@ -74,7 +74,7 @@ def grad_cam(fname):
     superimposed_img = jet_heatmap * alpha + img
     img1 = tf.keras.preprocessing.image.array_to_img(superimposed_img)
 
-    col2.image(img1)
+    col2.image(img1,use_column_width='auto')
     #st.image(img1)
 
 def predict(image_file):
