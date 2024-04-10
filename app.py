@@ -9,6 +9,20 @@ from matplotlib import cm
 import cv2
 from streamlit_image_select import image_select
 
+
+st.set_page_config(
+    page_title="Retinal Disease Detection",
+    page_icon = ":eye:",
+    initial_sidebar_state = 'auto'
+)
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 button_html = """
     <style>
         .styled-button {
@@ -31,19 +45,6 @@ button_html = """
     <button class="styled-button">Classify</button>
 """
 st.markdown(button_html, unsafe_allow_html=True)
-
-st.set_page_config(
-    page_title="Retinal Disease Detection",
-    page_icon = ":eye:",
-    initial_sidebar_state = 'auto'
-)
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 with st.sidebar:
         st.image('bg1.jpg')
