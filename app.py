@@ -23,29 +23,6 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-button_html = """
-    <style>
-        .styled-button {
-            background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        .styled-button:hover {
-            background-color: #005F6B;
-        }
-    </style>
-    <button class="styled-button">Classify</button>
-"""
-st.markdown(button_html, unsafe_allow_html=True)
-
 with st.sidebar:
         st.image('bg1.jpg')
         st.title("Retinal Detection")
@@ -119,7 +96,7 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-class_btn = st.markdown(hide_streamlit_style, unsafe_allow_html=True)#st.button("Classify")
+class_btn = st.button("Classify")
 col1, col2 = st.columns(2)
 
 if class_btn:
