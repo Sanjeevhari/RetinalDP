@@ -122,17 +122,16 @@ if class_btn:
         elif prediction == 'Cataract':
             st.sidebar.warning(string)
             #st.markdown("## Remedy")
-            #st.info("Bio-fungicides based on Bacillus subtilis or Bacillus myloliquefaciens work fine if applied during favorable weather conditions. Hot water treatment of seeds or fruits (48°C for 20 minutes) can kill any fungal residue and prevent further spreading of the disease in the field or during transport.")
+            st.info("Cataract is a clouding of the eye's lens, resulting in blurred vision. Grad-CAM highlights areas affected by cataracts, typically focusing on the lens region in retinal images.")
 
         elif prediction == 'Diabetic Retinopathy':
             st.sidebar.warning(string)
             #st.markdown("## Remedy")
-            #st.info("Prune flowering trees during blooming when wounds heal fastest. Remove wilted or dead limbs well below infected areas. Avoid pruning in early spring and fall when bacteria are most active.If using string trimmers around the base of trees avoid damaging bark with breathable Tree Wrap to prevent infection.")
+            st.info("Diabetic retinopathy is a complication of diabetes that damages the blood vessels in the retina, leading to vision impairment. Grad-CAM highlights areas with abnormal blood vessel growth or leakage in retinal images")
 
         elif prediction == 'Glaucoma':
             st.sidebar.warning(string)
             #st.markdown("## Remedy")
-            #st.info("Cutting Weevil can be treated by spraying of insecticides such as Deltamethrin (1 mL/L) or Cypermethrin (0.5 mL/L) or Carbaryl (4 g/L) during new leaf emergence can effectively prevent the weevil damage.")
-
+            st.info("Glaucoma is a group of eye disorders that damage the optic nerve, often due to increased pressure in the eye. Grad-CAM highlights the optic nerve region in retinal images, where damage may indicate the presence of glaucoma.")
 
 
