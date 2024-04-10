@@ -9,6 +9,19 @@ from matplotlib import cm
 import cv2
 from streamlit_image_select import image_select
 
+button_style = """
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+"""
+
 st.set_page_config(
     page_title="Retinal Disease Detection",
     page_icon = ":eye:",
@@ -95,7 +108,7 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-class_btn = st.button("Classify")
+class_btn = st.button("Classify", style=button_style)
 col1, col2 = st.columns(2)
 
 if class_btn:
