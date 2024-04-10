@@ -96,9 +96,9 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-b1, b2 = st.columns(2)
+b1, b2, b3, b4, b5, b6, b7, b8, b9 = st.columns(9)
 b1.button("Reset", type="primary")
-class_btn = b2.button("Classify")
+class_btn = b9.button("Classify")
 col1, col2 = st.columns(2)
 
 if class_btn:
