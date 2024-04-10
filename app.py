@@ -119,7 +119,7 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-class_btn = st.button("Classify")
+class_btn = st.markdown(hide_streamlit_style, unsafe_allow_html=True)#st.button("Classify")
 col1, col2 = st.columns(2)
 
 if class_btn:
