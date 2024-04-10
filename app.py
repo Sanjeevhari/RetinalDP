@@ -26,7 +26,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 with st.sidebar:
         st.image('bg1.jpg')
         st.title("Retinal Detection")
-        st.subheader("Detection of diseases present in the Retinal. This helps an user to easily detect the disease and identify it's cause.")
+        st.subheader("Detection of diseases present in the Retinal.This helps an user to easily detect the disease and provide Grad-CAM Visualization")
 
 st.write("""
          # Retinal Disease Detection
@@ -112,8 +112,8 @@ if class_btn:
             col1.image(file, caption='Original Image')
         prediction = predict(file)
         grad_cam(file)
-        #st.write(f"Predicted Disease: {prediction}")
-
+        
+        st.write("#Result")
         string = "Detected Disease : " + prediction
         if prediction == 'Normal':
             st.balloons()
