@@ -7,6 +7,7 @@ from tensorflow.keras import backend as K
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import cv2
+from streamlit_image_select import image_select
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
