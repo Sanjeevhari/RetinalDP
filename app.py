@@ -96,7 +96,8 @@ file = image_select(
         "Images/112_right.jpg",
     ],
 )
-class_btn = st.button("Classify")
+b1, b2, b3, b4, b5 = st.columns(5)
+class_btn = b5.button("Classify")
 col1, col2 = st.columns(2)
 
 if class_btn:
