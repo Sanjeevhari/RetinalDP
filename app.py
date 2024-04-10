@@ -9,18 +9,28 @@ from matplotlib import cm
 import cv2
 from streamlit_image_select import image_select
 
-button_style = """
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
+button_html = """
+    <style>
+        .styled-button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .styled-button:hover {
+            background-color: #005F6B;
+        }
+    </style>
+    <button class="styled-button">Classify</button>
 """
+st.markdown(button_html, unsafe_allow_html=True)
 
 st.set_page_config(
     page_title="Retinal Disease Detection",
