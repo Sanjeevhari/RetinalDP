@@ -36,11 +36,7 @@ model = load_model('Modeleye.h5')
 
 labels= ['Cataract', 'Diabetic Retinopathy', 'Glaucoma', 'Normal']
 
-def save_uploaded_file(uploaded_file):
-    with open("temp_image.jpg", "wb") as f:
-        f.write(uploaded_file.getbuffer())
-    return "temp_image.jpg"
-
+@st.cache
 def grad_cam(fname):
     DIM = 224
     img = tf.keras.preprocessing.image.load_img(fname, target_size=(DIM, DIM))
@@ -79,6 +75,7 @@ def grad_cam(fname):
     col2.image(img1)#,use_column_width="always")
     #st.image(img1)
 
+@st.cache
 def predict(image_file):
   img = tf.keras.preprocessing.image.load_img(image_file, target_size=(224, 224))
   img_array = tf.keras.preprocessing.image.img_to_array(img)
