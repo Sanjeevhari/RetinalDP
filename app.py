@@ -69,7 +69,7 @@ def grad_cam(fname):
     jet_heatmap = jet_heatmap.resize((img.shape[1], img.shape[0]))
     jet_heatmap = tf.keras.preprocessing.image.img_to_array(jet_heatmap)
 
-    superimposed_img = jet_heatmap * alpha + img
+    superimposed_img = jet_heatmap * alpha + img * 0.5
     img1 = tf.keras.preprocessing.image.array_to_img(superimposed_img)
 
     col2.image(img1, caption='Grad cam')#,use_column_width="always")
@@ -118,6 +118,7 @@ if class_btn:
         if prediction == 'Normal':
             st.balloons()
             st.sidebar.success(string)
+            st.markdown("## Normal")
 
         elif prediction == 'Cataract':
             st.sidebar.warning(string)
